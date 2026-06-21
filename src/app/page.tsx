@@ -23,6 +23,9 @@ export default function HomePage() {
               پلانی ڕۆژانە بە ناوچەی نزیک، ڕێنمایی “چۆن بچیت؟”، ڕێگای Google Maps، کافە و رێستوران بۆ
               بودجەی جیاواز، و زانیاری گونجاو بۆ گەشتیارانی کورد.
             </p>
+            <p className="mt-4 inline-flex rounded-md border border-mk-cyan bg-white px-4 py-2 text-sm font-bold text-mk-navy">
+              نوێ: پەڕەی دوبەی زیاد کراوە و پلانی ئیستەنبولیش بە شوێنە نزیکەکان ڕێکخراوە.
+            </p>
             <div className="mt-7 flex flex-wrap gap-3">
               <Link
                 href="/istanbul"
