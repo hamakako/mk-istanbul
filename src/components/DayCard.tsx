@@ -1,12 +1,15 @@
 import KurdishRouteGuide from "@/components/KurdishRouteGuide";
 import SmartRouteButton from "@/components/SmartRouteButton";
-import type { ItineraryDay } from "@/types/travel";
+import type { Coordinates, CountryCode, ItineraryDay } from "@/types/travel";
 
 type DayCardProps = {
   day: ItineraryDay;
+  countryCode?: CountryCode;
+  mapCenter?: Coordinates;
+  manualPlaceholder?: string;
 };
 
-export default function DayCard({ day }: DayCardProps) {
+export default function DayCard({ day, countryCode, mapCenter, manualPlaceholder }: DayCardProps) {
   return (
     <article className="print-card rounded-md border border-mk-line bg-white p-5 shadow-soft">
       <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
@@ -19,8 +22,17 @@ export default function DayCard({ day }: DayCardProps) {
           destinationName={day.destinationName}
           destinationCoordinates={day.destinationCoordinates}
           attractionName={`ڕۆژی ${day.day}: ${day.title}`}
+          countryCode={countryCode}
+          mapCenter={mapCenter}
+          manualPlaceholder={manualPlaceholder}
         />
       </div>
+
+      {day.clusterNote ? (
+        <p className="mt-4 rounded-md border border-mk-cyan/35 bg-mk-cyan/12 px-4 py-3 text-sm font-bold leading-7 text-mk-navy">
+          {day.clusterNote}
+        </p>
+      ) : null}
 
       <div className="mt-5 grid gap-4 md:grid-cols-3">
         <section className="rounded-md border border-mk-line p-4">

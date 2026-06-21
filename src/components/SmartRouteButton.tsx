@@ -3,12 +3,15 @@
 import { useCallback, useMemo, useState } from "react";
 import LocationInput from "@/components/LocationInput";
 import RouteModeSelector from "@/components/RouteModeSelector";
-import type { Coordinates, RouteMode } from "@/types/travel";
+import type { Coordinates, CountryCode, RouteMode } from "@/types/travel";
 
 type SmartRouteButtonProps = {
   destinationName: string;
   destinationCoordinates?: Coordinates;
   attractionName?: string;
+  countryCode?: CountryCode;
+  mapCenter?: Coordinates;
+  manualPlaceholder?: string;
 };
 
 type StartChoice = "current" | "manual" | null;
@@ -64,7 +67,10 @@ function navigateToMaps(url: string, tab?: Window | null) {
 export default function SmartRouteButton({
   destinationName,
   destinationCoordinates,
-  attractionName
+  attractionName,
+  countryCode = "tr",
+  mapCenter,
+  manualPlaceholder
 }: SmartRouteButtonProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedMode, setSelectedMode] = useState<RouteMode>("driving");
@@ -163,7 +169,7 @@ export default function SmartRouteButton({
           resetMessages();
           setIsOpen(true);
         }}
-        className="no-print inline-flex items-center justify-center rounded-md bg-mk-navy px-4 py-3 text-sm font-bold text-white shadow-soft transition hover:bg-[#24158f] focus-visible:focus-ring"
+        className="no-print inline-flex items-center justify-center rounded-md bg-mk-navy px-4 py-3 text-sm font-bold text-white shadow-soft transition hover:bg-mk-cyan hover:text-mk-navy focus-visible:focus-ring"
       >
         ڕێگا پیشان بدە
       </button>
@@ -245,12 +251,15 @@ export default function SmartRouteButton({
                     value={manualStart}
                     onChange={handleManualChange}
                     onCoordinateSelect={handleManualCoordinateSelect}
+                    countryCode={countryCode}
+                    mapCenter={mapCenter}
+                    placeholder={manualPlaceholder}
                   />
                   <div className="flex flex-wrap items-center gap-3">
                     <button
                       type="button"
                       onClick={handleManualRoute}
-                      className="rounded-md bg-mk-navy px-4 py-3 text-sm font-bold text-white transition hover:bg-[#24158f] focus-visible:focus-ring"
+                      className="rounded-md bg-mk-navy px-4 py-3 text-sm font-bold text-white transition hover:bg-mk-cyan hover:text-mk-navy focus-visible:focus-ring"
                     >
                       ڕێگا پیشان بدە
                     </button>

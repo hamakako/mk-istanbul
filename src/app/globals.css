@@ -4,7 +4,7 @@
 
 :root {
   color-scheme: light;
-  background: #fbfaf7;
+  background: #fffdf8;
   color: #141326;
 }
 
@@ -21,8 +21,8 @@ body {
   min-height: 100vh;
   margin: 0;
   background:
-    linear-gradient(180deg, rgba(239, 227, 202, 0.44), rgba(255, 255, 255, 0.82) 340px),
-    #fbfaf7;
+    linear-gradient(180deg, rgba(239, 227, 202, 0.36), rgba(255, 255, 255, 0.9) 320px),
+    #fffdf8;
   color: #141326;
   font-family: var(--font-noor), Arial, sans-serif;
   letter-spacing: 0;
@@ -55,7 +55,7 @@ a {
 }
 
 .focus-ring {
-  outline: 3px solid rgba(138, 203, 208, 0.72);
+  outline: 3px solid rgba(86, 182, 198, 0.6);
   outline-offset: 3px;
 }
 

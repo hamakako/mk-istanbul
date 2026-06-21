@@ -1,6 +1,7 @@
-# MK Istanbul 10-Day Travel Guide
+# MK Kurdish Travel Guide
 
 ماڵپەڕێکی Next.js + TypeScript + Tailwind CSS بە زمانی کوردی سۆرانی بۆ گەشتیارانی MK Business and Travel.
+ئێستا دوو پەڕەی سەرەکی هەیە: ئیستەنبول و دوبەی.
 
 ## دامەزراندن
 
@@ -27,6 +28,8 @@ http://localhost:3000
 ```bash
 NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_google_maps_key
 NEXT_PUBLIC_BASE_PATH=
+GEMINI_API_KEY=
+GEMINI_MODEL=gemini-3.5-flash
 ```
 
 کاتێک کلیلی Google Maps زیاد دەکرێت:
@@ -36,6 +39,20 @@ NEXT_PUBLIC_BASE_PATH=
 - ماپی شوێنە گرنگەکان بە marker پیشان دەدرێت.
 
 ئەگەر کلیل زیاد نەکرێت، دوگمەی ڕێگا هێشتا کار دەکات و شوێنی دەستکرد ڕاستەوخۆ بۆ Google Maps directions دەنێرێت.
+
+## Gemini AI
+
+ماڵپەڕەکە لە GitHub Pages وەک static site بڵاو دەکرێتەوە، بۆیە کلیلی Gemini نابێت لە کۆدی client یان `NEXT_PUBLIC_*` دابنرێت. بۆ بەکارهێنانی Gemini بە شێوەی پارێزراو:
+
+1. لە GitHub بچۆ بۆ `Settings` → `Secrets and variables` → `Actions`.
+2. secret ـێکی نوێ بە ناوی `GEMINI_API_KEY` زیاد بکە.
+3. GitHub Actions پێش build ئەم فەرمانە دەکات:
+
+```bash
+npm run ai:insights
+```
+
+ئەگەر کلیلی Gemini نەبوو یان هەڵە بوو، سایتەکە هێشتا بە fallback ـی کوردی build دەبێت.
 
 ## بڵاوکردنەوە بە GitHub Pages بەخۆڕایی
 
@@ -54,7 +71,7 @@ NEXT_PUBLIC_BASE_PATH=
 5. فایلەکان `push` بکە بۆ برانچی `main`.
 6. GitHub Actions خۆکارانە `npm ci` و `npm run build` دەکات و فولدەری `out` بڵاو دەکاتەوە.
 
-ئەگەر ناوی ریپۆکەت `username.github.io` بێت، ماڵپەڕەکە لە ڕیشەی دۆمەینەکە دەردەکەوێت. ئەگەر ریپۆیەکی ئاسایی بێت، وەک `mk-istanbul-travel-guide`، ماڵپەڕەکە بە شێوەی `https://username.github.io/mk-istanbul-travel-guide/` دەردەکەوێت.
+ئەگەر ناوی ریپۆکەت `username.github.io` بێت، ماڵپەڕەکە لە ڕیشەی دۆمەینەکە دەردەکەوێت. ئەگەر ریپۆیەکی ئاسایی بێت، وەک `mk-istanbul`، ماڵپەڕەکە بە شێوەی `https://username.github.io/mk-istanbul/` دەردەکەوێت.
 
 ئەگەر دۆمەینی تایبەت بەکار دەهێنیت و ناتەوێت ناوی ریپۆ لە URL ـدا بێت، لە GitHub Actions یان `.env.local` ئەمە بەتاڵ بهێڵە:
 
@@ -82,6 +99,9 @@ src/assets/images/mk-logo.png
 - `src/components/LocationInput.tsx`
 - `src/components/RouteModeSelector.tsx`
 - `src/components/KurdishRouteGuide.tsx`
+- `src/components/CityGuidePage.tsx`
+- `src/components/FoodGuide.tsx`
+- `src/components/TrendGuide.tsx`
 - `src/components/DayCard.tsx`
 - `src/components/AttractionCard.tsx`
 

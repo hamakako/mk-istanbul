@@ -4,8 +4,8 @@ import mkLogo from "@/assets/images/mk-logo.png";
 
 const navItems = [
   { href: "/", label: "سەرەکی" },
-  { href: "/itinerary", label: "پلانی ١٠ ڕۆژ" },
-  { href: "/attractions", label: "شوێنە گرنگەکان" }
+  { href: "/istanbul", label: "ئیستەنبول" },
+  { href: "/dubai", label: "دوبەی" }
 ];
 
 export default function Header() {
@@ -25,7 +25,7 @@ export default function Header() {
           </span>
           <span>
             <span className="block text-lg font-bold text-mk-navy">MK Business and Travel</span>
-            <span className="block text-sm text-mk-ink/72">ڕێنمای گەشتی ئیستەنبول</span>
+            <span className="block text-sm text-mk-ink/72">ڕێنمای گەشتی کوردی</span>
           </span>
         </Link>
 

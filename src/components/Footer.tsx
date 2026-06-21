@@ -5,7 +5,7 @@ export default function Footer() {
         <div>
           <h2 className="text-xl font-bold">MK Business and Travel</h2>
           <p className="mt-2 text-sm leading-7 text-white/78">
-            ڕێنماییەکی ساده و ڕوون بۆ ئەو گەشتیارانەی دەیانەوێت ئیستەنبول بە ئاسانی بگەڕێن.
+            ڕێنماییەکی ساده و ڕوون بۆ ئەو گەشتیارانەی دەیانەوێت ئیستەنبول و دوبەی بە ئاسانی بگەڕێن.
           </p>
         </div>
         <div>

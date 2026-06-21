@@ -12,13 +12,14 @@ const config: Config = {
         mk: {
           navy: "#170C79",
           teal: "#8ACBD0",
+          cyan: "#56B6C6",
           cream: "#EFE3CA",
           ink: "#141326",
-          line: "#DAD6EF"
+          line: "#D8D1EA"
         }
       },
       boxShadow: {
-        soft: "0 18px 45px rgba(23, 12, 121, 0.10)"
+        soft: "0 16px 36px rgba(23, 12, 121, 0.09)"
       }
     }
   },

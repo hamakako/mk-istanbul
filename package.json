@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "ai:insights": "node scripts/generate-ai-insights.mjs",
     "build": "next build",
     "start": "next start",
     "typecheck": "tsc --noEmit"

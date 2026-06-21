@@ -1,12 +1,15 @@
 import KurdishRouteGuide from "@/components/KurdishRouteGuide";
 import SmartRouteButton from "@/components/SmartRouteButton";
-import type { Attraction } from "@/types/travel";
+import type { Attraction, Coordinates, CountryCode } from "@/types/travel";
 
 type AttractionCardProps = {
   attraction: Attraction;
+  countryCode?: CountryCode;
+  mapCenter?: Coordinates;
+  manualPlaceholder?: string;
 };
 
-export default function AttractionCard({ attraction }: AttractionCardProps) {
+export default function AttractionCard({ attraction, countryCode, mapCenter, manualPlaceholder }: AttractionCardProps) {
   return (
     <article className="print-card flex h-full flex-col rounded-md border border-mk-line bg-white p-5 shadow-soft">
       <div className="flex flex-wrap items-start justify-between gap-3">
@@ -19,6 +22,9 @@ export default function AttractionCard({ attraction }: AttractionCardProps) {
           destinationName={attraction.destinationName}
           destinationCoordinates={attraction.coordinates}
           attractionName={`${attraction.nameKu} - ${attraction.nameEn}`}
+          countryCode={countryCode}
+          mapCenter={mapCenter}
+          manualPlaceholder={manualPlaceholder}
         />
       </div>
 

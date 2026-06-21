@@ -5,8 +5,8 @@ import Footer from "@/components/Footer";
 import { noorFont } from "./fonts";
 
 export const metadata: Metadata = {
-  title: "MK Istanbul 10-Day Travel Guide",
-  description: "پلانی ١٠ ڕۆژی ئیستەنبول بۆ گەشتیارانی MK Business and Travel."
+  title: "MK Kurdish Travel Guide",
+  description: "پلانی گەشتی کوردی بۆ ئیستەنبول و دوبەی لەگەڵ ڕێنمای Google Maps."
 };
 
 export default function RootLayout({

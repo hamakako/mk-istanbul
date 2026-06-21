@@ -2,12 +2,15 @@
 
 import { useEffect, useRef, useState } from "react";
 import { loadGoogleMaps } from "@/lib/googleMaps";
-import type { Coordinates } from "@/types/travel";
+import type { Coordinates, CountryCode } from "@/types/travel";
 
 type LocationInputProps = {
   value: string;
   onChange: (value: string) => void;
   onCoordinateSelect: (coordinates?: Coordinates) => void;
+  countryCode?: CountryCode;
+  mapCenter?: Coordinates;
+  placeholder?: string;
 };
 
 const istanbulCenter: Coordinates = { lat: 41.0082, lng: 28.9784 };
@@ -16,7 +19,14 @@ function formatCoordinates(coordinates: Coordinates) {
   return `${coordinates.lat.toFixed(6)},${coordinates.lng.toFixed(6)}`;
 }
 
-export default function LocationInput({ value, onChange, onCoordinateSelect }: LocationInputProps) {
+export default function LocationInput({
+  value,
+  onChange,
+  onCoordinateSelect,
+  countryCode = "tr",
+  mapCenter = istanbulCenter,
+  placeholder = "Taksim Square، Sultanahmet، My hotel in Fatih، Istanbul Airport"
+}: LocationInputProps) {
   const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
   const inputRef = useRef<HTMLInputElement>(null);
   const mapRef = useRef<HTMLDivElement>(null);
@@ -40,7 +50,7 @@ export default function LocationInput({ value, onChange, onCoordinateSelect }: L
         }
 
         const autocomplete = new google.maps.places.Autocomplete(inputRef.current, {
-          componentRestrictions: { country: "tr" },
+          componentRestrictions: { country: countryCode },
           fields: ["formatted_address", "geometry", "name"]
         });
 
@@ -68,7 +78,7 @@ export default function LocationInput({ value, onChange, onCoordinateSelect }: L
       active = false;
       listener?.remove();
     };
-  }, [apiKey, onChange, onCoordinateSelect]);
+  }, [apiKey, countryCode, onChange, onCoordinateSelect]);
 
   useEffect(() => {
     if (!apiKey || !showMapPicker || !mapRef.current) {
@@ -84,7 +94,7 @@ export default function LocationInput({ value, onChange, onCoordinateSelect }: L
         }
 
         const map = new google.maps.Map(mapRef.current, {
-          center: istanbulCenter,
+          center: mapCenter,
           zoom: 12,
           mapTypeControl: false,
           streetViewControl: false,
@@ -93,7 +103,7 @@ export default function LocationInput({ value, onChange, onCoordinateSelect }: L
 
         const marker = new google.maps.Marker({
           map,
-          position: istanbulCenter,
+          position: mapCenter,
           draggable: true
         });
 
@@ -129,7 +139,7 @@ export default function LocationInput({ value, onChange, onCoordinateSelect }: L
       active = false;
       markerRef.current = null;
     };
-  }, [apiKey, showMapPicker, onChange, onCoordinateSelect]);
+  }, [apiKey, showMapPicker, mapCenter, onChange, onCoordinateSelect]);
 
   const handleTextChange = (nextValue: string) => {
     onChange(nextValue);
@@ -147,7 +157,7 @@ export default function LocationInput({ value, onChange, onCoordinateSelect }: L
         type="text"
         value={value}
         onChange={(event) => handleTextChange(event.target.value)}
-        placeholder="Taksim Square، Sultanahmet، My hotel in Fatih، Istanbul Airport"
+        placeholder={placeholder}
         className="mt-2 w-full rounded-md border border-mk-line bg-white px-4 py-3 text-right text-sm text-mk-ink outline-none transition placeholder:text-mk-ink/42 focus:border-mk-teal focus:ring-4 focus:ring-mk-teal/22"
       />
 
