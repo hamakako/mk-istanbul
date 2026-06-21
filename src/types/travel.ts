@@ -1,3 +1,5 @@
+import type { StaticImageData } from "next/image";
+
 export type Coordinates = {
   lat: number;
   lng: number;
@@ -21,6 +23,8 @@ export type ItineraryDay = {
   title: string;
   area: string;
   clusterNote?: string;
+  image?: StaticImageData;
+  imageAlt?: string;
   morning: string;
   afternoon: string;
   evening: string;
@@ -37,6 +41,8 @@ export type Attraction = {
   nameKu: string;
   nameEn: string;
   description: string;
+  image?: StaticImageData;
+  imageAlt?: string;
   visitTime: string;
   area: string;
   category: string;

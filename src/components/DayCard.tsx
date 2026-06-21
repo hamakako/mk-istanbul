@@ -1,3 +1,4 @@
+import Image from "next/image";
 import KurdishRouteGuide from "@/components/KurdishRouteGuide";
 import SmartRouteButton from "@/components/SmartRouteButton";
 import type { Coordinates, CountryCode, ItineraryDay } from "@/types/travel";
@@ -27,6 +28,23 @@ export default function DayCard({ day, countryCode, mapCenter, manualPlaceholder
           manualPlaceholder={manualPlaceholder}
         />
       </div>
+
+      {day.image ? (
+        <div className="relative mt-5 aspect-[16/7] min-h-52 overflow-hidden rounded-md bg-mk-cream">
+          <Image
+            src={day.image}
+            alt={day.imageAlt || day.title}
+            fill
+            className="object-cover"
+            sizes="(min-width: 1024px) 960px, 100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-mk-navy/64 via-mk-navy/6 to-transparent" />
+          <div className="absolute bottom-0 right-0 p-4 text-white">
+            <p className="text-xs font-bold text-mk-cyan">وێنەی شوێن</p>
+            <p className="mt-1 text-lg font-bold">{day.area}</p>
+          </div>
+        </div>
+      ) : null}
 
       {day.clusterNote ? (
         <p className="mt-4 rounded-md border border-mk-cyan/35 bg-mk-cyan/12 px-4 py-3 text-sm font-bold leading-7 text-mk-navy">
