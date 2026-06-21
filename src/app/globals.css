@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  background: #fbfaf7;
+  color: #141326;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  direction: rtl;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background:
+    linear-gradient(180deg, rgba(239, 227, 202, 0.44), rgba(255, 255, 255, 0.82) 340px),
+    #fbfaf7;
+  color: #141326;
+  font-family: var(--font-noor), Arial, sans-serif;
+  letter-spacing: 0;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: #8acbd0;
+  color: #170c79;
+}
+
+.container-page {
+  width: min(1120px, calc(100% - 32px));
+  margin-inline: auto;
+}
+
+.focus-ring {
+  outline: 3px solid rgba(138, 203, 208, 0.72);
+  outline-offset: 3px;
+}
+
+@media print {
+  body {
+    background: #ffffff;
+  }
+
+  header,
+  footer,
+  .no-print {
+    display: none !important;
+  }
+
+  .container-page {
+    width: 100%;
+  }
+
+  .print-card {
+    break-inside: avoid;
+    border: 1px solid #d8d3c6 !important;
+    box-shadow: none !important;
+  }
+}
